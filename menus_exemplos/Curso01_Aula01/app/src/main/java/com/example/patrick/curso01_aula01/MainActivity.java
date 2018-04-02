@@ -10,7 +10,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_detalhes);
     }
 
     @Override
@@ -20,14 +20,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if(id == R.id.action_settings){
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+        return (id == R.id.action_settings) || super.onOptionsItemSelected(item);
 
     }
 
