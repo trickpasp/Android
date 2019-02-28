@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Pedra, papel ou tesoura</string>
+    <string name="escolha_do_aap">Escolha do aap</string>
 </resources>
