@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">RadioButton</string>
+    <string name="pudin">Pudin</string>
+    <string name="torta_de_frango">Torta de frango</string>
+    <string name="lasanha">Lasanha</string>
+    <string name="qual_sua_comida_preferida">Qual sua comida preferida?</string>
+    <string name="escolher">Escolher</string>
+</resources>

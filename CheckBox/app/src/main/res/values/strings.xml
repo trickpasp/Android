@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">CheckBox</string>
+    <string name="text_pergunta">Quais animais de estimação você tem?</string>
+    <string name="cao">Cão</string>
+    <string name="gato">Gato</string>
+    <string name="papagaio">Papagaio</string>
+    <string name="mostrar">Mostrar</string>
+    <string name="mostra">Mostra...</string>
+    <string name="mostrarTexto">Mostrar</string>
+</resources>
