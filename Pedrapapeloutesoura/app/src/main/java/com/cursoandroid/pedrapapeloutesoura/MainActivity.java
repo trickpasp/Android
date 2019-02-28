@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void opcaoSelecionada(String escolhaUsuario){
 
-        ImageView imageResultado = (ImageView) findViewById(R.id.imageResultadoId);
-        TextView textResultado = (TextView) findViewById(R.id.textResultadoId);
+        ImageView imageResultado = findViewById(R.id.imageResultadoId);
+        TextView textResultado = findViewById(R.id.textResultadoId);
 
         //gerar número aleatório
         String [] opcoes = {"pedra", "papel", "tesoura"};
