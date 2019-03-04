@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ProgressBar</string>
+    <string name="carregar">Carregar</string>
 </resources>
