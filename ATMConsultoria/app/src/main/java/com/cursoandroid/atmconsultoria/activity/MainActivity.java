@@ -1,8 +1,10 @@
-package com.cursoandroid.atmconsultoria;
+package com.cursoandroid.atmconsultoria.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,6 +14,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.cursoandroid.atmconsultoria.R;
+import com.cursoandroid.atmconsultoria.fragment.ClientesFragment;
+import com.cursoandroid.atmconsultoria.fragment.PrincipalFragment;
+import com.cursoandroid.atmconsultoria.fragment.ServicosFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -23,12 +30,17 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Carrega tela principal
+        PrincipalFragment principalFragment = new PrincipalFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frameContainer, principalFragment);
+        transaction.commit();
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                enviarEmail();
             }
         });
 
@@ -80,22 +92,43 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        if (id == R.id.nav_principal) {
+            PrincipalFragment principalFragment = new PrincipalFragment();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.frameContainer, principalFragment);
+            transaction.commit();
+        } else if (id == R.id.nav_servicos) {
+            ServicosFragment servicosFragment = new ServicosFragment();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.frameContainer, servicosFragment);
+            transaction.commit();
+        } else if (id == R.id.nav_clientes) {
+            ClientesFragment clientesFragment = new ClientesFragment();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.frameContainer, clientesFragment);
+            transaction.commit();
+        } else if (id == R.id.nav_contatos) {
+            enviarEmail();
+        } else if (id == R.id.nav_sobre) {
+            startActivity(new Intent(this, SobreActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void enviarEmail(){
+
+        Intent email = new Intent(Intent.ACTION_SEND);
+        email.putExtra(Intent.EXTRA_EMAIL, new String[]{"atmconsultoria@gmail.com"});
+        email.putExtra(Intent.EXTRA_SUBJECT, "Contato pelo App");
+        email.putExtra(Intent.EXTRA_TEXT, "Mensagem Autómatica");
+        //configurar apps para e-mail
+        email.setType("message/rfc822");
+        //email.setType("application/pdf");
+        //email.setType("image/pdf");
+
+        startActivity(Intent.createChooser(email, "Escolha o app de email"));
     }
 }
